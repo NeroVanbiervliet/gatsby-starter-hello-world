@@ -8,11 +8,9 @@ const getUrl = (location) => {
 }
 
 export default function Home({ location }) {
-  const [url, setUrl] = useState(getUrl(location))
-  const [isClient, setClient] = useState(false);
+  const [url, setUrl] = useState()
 
   useEffect(() => {
-    setClient(typeof window !== 'undefined');
     setUrl(getUrl(location))
   }, []);
 
