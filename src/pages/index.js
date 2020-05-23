@@ -1,18 +1,14 @@
 import './index.css';
 import React, {useState} from "react"
 
-const NO_URL = 'NO URL';
+const URL_WITHOUT_PARAMS = 'http://localhost:8000/';
 
-const getUrl = () => {
-  if ((typeof window) === 'undefined') {
-    return NO_URL;
-  }
-
-  return window.location.href;
+const getUrl = (location) => {
+   return URL_WITHOUT_PARAMS + location.search;
 }
 
-export default function Home() {
-  const [url, setUrl] = useState(getUrl())
-  const invalidClass = url === NO_URL ? 'invalid' : '';
+export default function Home({ location }) {
+  const [url, setUrl] = useState(getUrl(location))
+  const invalidClass = url === URL_WITHOUT_PARAMS ? 'invalid' : '';
   return <div className={invalidClass}>{`URL = ${url}`}</div>
 }
